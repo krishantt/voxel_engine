@@ -25,6 +25,9 @@ class VoxelEngine:
         self.delta_time = 0.0
         self.time = 0.0
 
+        pg.event.set_grab(True)
+        pg.mouse.set_visible(False)
+
         self.is_running = True
         self.on_init()
 
