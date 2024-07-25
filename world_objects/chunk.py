@@ -2,7 +2,7 @@ from settings import *
 from meshes.chunk_mesh import ChunkMesh
 
 class Chunk:
-    def __init__(self, app, position):
+    def __init__(self, app):
         self.app = app
         self.voxels: np.array = self.build_voxels()
         self.mesh: ChunkMesh = None
