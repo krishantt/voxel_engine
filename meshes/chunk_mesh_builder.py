@@ -3,7 +3,9 @@ from settings import *
 def is_void(voxel_pos, chunk_vowels):
     x,y,z = voxel_pos
     if 0 <= x < CHUNK_SIZE and 0 <= y < CHUNK_SIZE and 0 <= z < CHUNK_SIZE:
-        return not chunk_vowels[x + CHUNK_SIZE * y + CHUNK_AREA * z]
+        if chunk_vowels[x + CHUNK_SIZE * z + CHUNK_AREA * y]:
+            return False
+    return True
 
 def add_data(vertex_data, index, *vertices):
     for vertex in vertices:
@@ -19,7 +21,7 @@ def build_chunk_mesh(chunk_voxels, format_size):
     for x in range(CHUNK_SIZE):
         for y in range(CHUNK_SIZE):
             for z in range(CHUNK_SIZE):
-                voxel_id = chunk_voxels[x + CHUNK_SIZE * y + CHUNK_AREA * z]
+                voxel_id = chunk_voxels[x + CHUNK_SIZE * z + CHUNK_AREA * y]
                 if not voxel_id:
                     continue
 
