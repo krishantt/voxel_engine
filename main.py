@@ -26,7 +26,7 @@ class VoxelEngine:
         self.delta_time = 0.0
         self.time = 0.0
 
-        # pg.event.set_grab(True)
+        pg.event.set_grab(True)
         pg.mouse.set_visible(False)
 
         self.is_running = True
@@ -46,7 +46,7 @@ class VoxelEngine:
 
         self.delta_time = self.clock.tick()
         self.time = pg.time.get_ticks() * 0.001
-        pg.display.set_caption(f"Voxel Engine | FPS: {self.clock.get_fps()}")
+        pg.display.set_caption(f"Voxel Engine | FPS: {int(self.clock.get_fps())}")
 
     def render(self):
         self.ctx.clear(color=BG_COLOR)
