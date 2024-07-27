@@ -1,5 +1,4 @@
-# Grapher-C
-
+# Voxel Engine
 A Minecraft like voxel engine created for Computer Graphics Project, IOE, Pulchowk Campus.
 
 
