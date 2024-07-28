@@ -5,6 +5,7 @@ from world_objects.chunk import Chunk
 class VoxelHandler:
     def __init__(self, world):
         self.app= world.app
+        self.chunks= world.chunks
 
         self.chunk= None
         self.voxel_id= None
@@ -12,10 +13,23 @@ class VoxelHandler:
         self.voxel_local_pos= None
         self.voxel_world_pos= None
         self.voxel_normal= None
+
         self.interaction_mode = 0
+        self.new_voxel_id =1
 
     def add_voxel(self):
-        pass
+        if self.voxel_id:
+            #check if voxel is along normal direction
+            result= self.get_voxel_id(self.voxel_world_pos + self.voxel_normal)
+        # is the new  place empty?
+            if not result[0]:
+                _, voxel_index, _, chunk= result
+                chunk.voxels[voxel_index]=self.new_voxel_id
+                chunk.mesh.rebuild()
+
+                if chunk.is_empty:
+                    chunk.is_empty = False
+                    # self.app.update_chunk_mesh(chunk)
 
 
     def remove_voxel(self):

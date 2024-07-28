@@ -11,8 +11,6 @@ class World:
         self.build_chunk_mesh()
         self.voxel_handler = VoxelHandler(self)
 
-    def update(self):
-        self.voxel_handler.update()
     def build_chunks(self):
         for x in range(WORLD_W):
             for y in range(WORLD_H):
@@ -33,7 +31,8 @@ class World:
 
 
     def update(self):
-        pass
+        self.voxel_handler.update()
+
 
     def render(self):
         for chunk in self.chunks:
