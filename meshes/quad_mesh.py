@@ -1,5 +1,6 @@
-from settings import *
 from meshes.base_mesh import BaseMesh
+import numpy as np
+
 
 class QuadMesh(BaseMesh):
     def __init__(self, app):
@@ -19,8 +20,8 @@ class QuadMesh(BaseMesh):
             (0.5, 0.5, 0.0), (-0.5, -0.5, 0.0), (0.5, -0.5, 0.0)
         ]
         colors = [
-            (0,1,0), (1,0,0), (1,1,0),
-            (0,1,0), (1,1,0), (0,0,1)
+            (0, 1, 0), (1, 0, 0), (1, 1, 0),
+            (0, 1, 0), (1, 1, 0), (0, 0, 1)
         ]
         vertex_data = np.hstack([vertices, colors], dtype=np.float32)
         return vertex_data

@@ -1,5 +1,6 @@
 import numpy as np
 
+
 class BaseMesh:
     def __init__(self) -> None:
         self.ctx = None
@@ -8,7 +9,7 @@ class BaseMesh:
         self.attrs: tuple[str, ...] = None
         self.vao = None
 
-    def get_vertex_data(self) -> np.array : ...
+    def get_vertex_data(self) -> np.array: ...
 
     def get_vao(self):
         vertex_data = self.get_vertex_data()

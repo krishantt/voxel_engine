@@ -8,6 +8,7 @@ from scene import Scene
 from player import Player
 from textures import Textures
 
+
 class VoxelEngine:
     def __init__(self):
         pg.init()
@@ -16,7 +17,7 @@ class VoxelEngine:
         pg.display.gl_set_attribute(pg.GL_CONTEXT_PROFILE_MASK, pg.GL_CONTEXT_PROFILE_CORE)
         pg.display.gl_set_attribute(pg.GL_DEPTH_SIZE, 24)
 
-        pg.display.set_mode(WIN_RES, flags= pg.OPENGL | pg.DOUBLEBUF)
+        pg.display.set_mode(WIN_RES, flags=pg.OPENGL | pg.DOUBLEBUF)
         self.ctx = mgl.create_context()
 
         self.ctx.enable(flags=mgl.DEPTH_TEST | mgl.CULL_FACE | mgl.BLEND)
@@ -29,6 +30,11 @@ class VoxelEngine:
         pg.event.set_grab(True)
         pg.mouse.set_visible(False)
 
+        self.textures = None
+        self.player = None
+        self.shader_program = None
+        self.scene = None
+
         self.is_running = True
         self.on_init()
 
@@ -37,7 +43,6 @@ class VoxelEngine:
         self.player = Player(self)
         self.shader_program = ShaderProgram(self)
         self.scene = Scene(self)
-
 
     def update(self):
         self.player.update()

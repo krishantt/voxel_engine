@@ -19,7 +19,7 @@ To be added.
 
 ###  📋 Requirements
 
-To setup and use the project you will need to have python:
+To set up and use the project you will need to have python:
  - [Python](https://www.python.org/)
 
 ###  ⬇️ Running the project
@@ -37,7 +37,7 @@ Change the working directory to the newly cloned repository:
 $ cd voxel_engine
 ```
 
-Create a virtual environemnt and activate it:
+Create a virtual environment and activate it:
 
 ```bash
 $ python3 -m venv env #or python -m venv env

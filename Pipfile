@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+glcontext = "==2.5.0"
+llvmlite = "==0.43.0"
+moderngl = "==5.10.0"
+numba = "==0.60.0"
+numpy = "==2.0.1"
+pygame = "==2.6.0"
+pyglm = "==2.7.1"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
+python_full_version = "3.11.9"

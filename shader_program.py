@@ -1,12 +1,13 @@
 from settings import *
 
+
 class ShaderProgram:
     def __init__(self, app):
         self.app = app
         self.ctx = app.ctx
         self.player = app.player
 
-        #shaders
+        # shaders
         self.chunk = self.get_program(shader_name='chunk')
         self.voxel_marker= self.get_program(shader_name='voxel_marker')
         self.set_uniforms_on_init()
