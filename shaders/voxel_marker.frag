@@ -11,4 +11,4 @@ void main() {
     fragColor = texture(u_texture_0, uv);
     fragColor.rgb += marker_color;
     fragColor.a = (fragColor.r + fragColor.b > 1.0) ? 0.0 : 1.0;
-}
+} 
