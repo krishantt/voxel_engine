@@ -8,7 +8,7 @@ class ShaderProgram:
 
         #shaders
         self.chunk = self.get_program(shader_name='chunk')
-
+        self.voxel_marker= self.get_program(shader_name='voxel_marker')
         self.set_uniforms_on_init()
 
     def set_uniforms_on_init(self):
