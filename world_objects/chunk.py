@@ -1,5 +1,8 @@
+import numpy as np
+
 from settings import *
 from meshes.chunk_mesh import ChunkMesh
+
 
 class Chunk:
     def __init__(self, world, position):
@@ -12,7 +15,7 @@ class Chunk:
         self.is_empty = True
 
     def get_model_matrix(self):
-        m_model = glm.translate(glm.mat4(), glm.vec3(self.position)* CHUNK_SIZE)
+        m_model = glm.translate(glm.mat4(), glm.vec3(self.position) * CHUNK_SIZE)
         return m_model
 
     def set_uniform(self):
@@ -35,8 +38,8 @@ class Chunk:
             for z in range(CHUNK_SIZE):
                 wx = x + cx
                 wz = z + cz
-                world_height = int(glm.simplex(glm.vec2(wx, wz)*0.01)*32 + 32)
-                local_height = min(world_height- cy, CHUNK_SIZE)
+                world_height = int(glm.simplex(glm.vec2(wx, wz) * 0.01) * 32 + 32)
+                local_height = min(world_height - cy, CHUNK_SIZE)
 
                 for y in range(local_height):
                     wy = y + cy

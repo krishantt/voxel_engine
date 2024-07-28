@@ -1,4 +1,3 @@
-from settings import *
 from world import World
 
 
