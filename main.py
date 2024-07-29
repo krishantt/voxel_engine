@@ -44,6 +44,7 @@ class VoxelEngine:
         self.player = Player(self)
         self.shader_program = ShaderProgram(self)
         self.scene = Scene(self)
+        self.init_music()
 
     def update(self):
         self.player.update()
@@ -73,6 +74,12 @@ class VoxelEngine:
             self.render()
         pg.quit()
         sys.exit()
+
+    @staticmethod
+    def init_music():
+        pg.mixer.init()
+        pg.mixer.music.load('music/music.mp3')
+        pg.mixer.music.play(loops=-1)
 
 
 if __name__ == "__main__":
