@@ -1,8 +1,13 @@
 import glm
 import math
+from numba import njit
+import numpy as np
 
 # resolution
 WIN_RES = glm.vec2(1600, 900)
+
+#world generation
+SEED = 16
 
 # ray casting
 MAX_RAY_DIST = 6
