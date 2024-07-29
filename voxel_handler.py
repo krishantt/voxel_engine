@@ -15,7 +15,7 @@ class VoxelHandler:
         self.voxel_normal = None
 
         self.interaction_mode = 0
-        self.new_voxel_id = 1
+        self.new_voxel_id = DIRT
 
     def add_voxel(self):
         if self.voxel_id:
@@ -32,7 +32,7 @@ class VoxelHandler:
                     # self.app.update_chunk_mesh(chunk)
 
     def rebuild_adj_chunk(self, adj_voxel_pos):
-        index=get_chunk_index(adj_voxel_pos)
+        index = get_chunk_index(adj_voxel_pos)
         if index!= -1:
             self.chunks[index].mesh.rebuild()
 
@@ -137,6 +137,8 @@ class VoxelHandler:
 
     def get_voxel_id(self, voxel_world_pos):
         cx, cy, cz = chunk_pos = voxel_world_pos / CHUNK_SIZE
+        
+        
         if 0 <= cx < WORLD_W and 0 <= cy < WORLD_H and 0 <= cz < WORLD_D:
             chunk_index = cx + WORLD_W * cz + WORLD_AREA * cy
             chunk = self.chunks[chunk_index]

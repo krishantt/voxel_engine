@@ -24,9 +24,9 @@ class Player(Camera):
     def mouse_control(self):
         mouse_dx, mouse_dy = pg.mouse.get_rel()
         if mouse_dx:
-            self.rotate_yaw(mouse_dx * MOUSE_SENSITIVITY)
+            self.rotate_yaw(delta_x=mouse_dx * MOUSE_SENSITIVITY)
         if mouse_dy:
-            self.rotate_pitch(mouse_dy * MOUSE_SENSITIVITY)
+            self.rotate_pitch(delta_y=mouse_dy * MOUSE_SENSITIVITY)
 
     def keyboard_control(self):
         key_state = pg.key.get_pressed()
@@ -35,10 +35,10 @@ class Player(Camera):
             self.move_forward(vel)
         if key_state[pg.K_s]:
             self.move_backward(vel)
-        if key_state[pg.K_a]:
-            self.move_left(vel)
         if key_state[pg.K_d]:
             self.move_right(vel)
+        if key_state[pg.K_a]:
+            self.move_left(vel)
         if key_state[pg.K_q]:
             self.move_up(vel)
         if key_state[pg.K_e]:

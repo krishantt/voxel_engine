@@ -12,10 +12,11 @@ from textures import Textures
 class VoxelEngine:
     def __init__(self):
         pg.init()
-        pg.display.gl_set_attribute(pg.GL_CONTEXT_MAJOR_VERSION, 3)
-        pg.display.gl_set_attribute(pg.GL_CONTEXT_MINOR_VERSION, 3)
+        pg.display.gl_set_attribute(pg.GL_CONTEXT_MAJOR_VERSION, MAJOR_VER)
+        pg.display.gl_set_attribute(pg.GL_CONTEXT_MINOR_VERSION, MINOR_VER)
         pg.display.gl_set_attribute(pg.GL_CONTEXT_PROFILE_MASK, pg.GL_CONTEXT_PROFILE_CORE)
-        pg.display.gl_set_attribute(pg.GL_DEPTH_SIZE, 24)
+        pg.display.gl_set_attribute(pg.GL_DEPTH_SIZE, DEPTH_SIZE)
+        pg.display.gl_set_attribute(pg.GL_MULTISAMPLESAMPLES, NUM_SAMPLES)
 
         pg.display.set_mode(WIN_RES, flags=pg.OPENGL | pg.DOUBLEBUF)
         self.ctx = mgl.create_context()
@@ -24,20 +25,15 @@ class VoxelEngine:
         self.ctx.gc_mode = 'auto'
 
         self.clock = pg.time.Clock()
-        self.delta_time = 0.0
-        self.time = 0.0
+        self.delta_time = 0
+        self.time = 0
 
         pg.event.set_grab(True)
         pg.mouse.set_visible(False)
 
-        self.textures = None
-        self.player = None
-        self.shader_program = None
-        self.scene = None
-
         self.is_running = True
         self.on_init()
-
+        
     def on_init(self):
         self.textures = Textures(self)
         self.player = Player(self)
@@ -51,8 +47,8 @@ class VoxelEngine:
 
         self.delta_time = self.clock.tick()
         self.time = pg.time.get_ticks() * 0.001
-        pg.display.set_caption(f"Voxel Engine | FPS: {int(self.clock.get_fps())}")
-
+        # pg.display.set_caption(f"Voxel Engine | FPS: {int(self.clock.get_fps())}")
+        pg.display.set_caption(f'{self.clock.get_fps() :.0f}')
     def render(self):
         self.ctx.clear(color=BG_COLOR)
         self.scene.render()

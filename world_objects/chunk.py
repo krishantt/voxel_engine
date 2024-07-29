@@ -36,11 +36,11 @@ class Chunk:
             self.mesh.render()
 
     def build_voxels(self):
-        # voxels = np.zeros(CHUNK_VOL, dtype=np.uint8)
         voxels = np.zeros(CHUNK_VOL, dtype='uint8')
 
         cx, cy, cz = glm.ivec3(self.position) * CHUNK_SIZE
         self.generate_terrain(voxels, cx, cy, cz)
+
         if np.any(voxels):
             self.is_empty = False
         return voxels
@@ -50,7 +50,6 @@ class Chunk:
          for x in range(CHUNK_SIZE):
             wx= x+cx
             for z in range(CHUNK_SIZE):
-                # wx = x + cx
                 wz = z + cz
                 world_height = get_height(wx, wz)
                 local_height = min(world_height - cy, CHUNK_SIZE)

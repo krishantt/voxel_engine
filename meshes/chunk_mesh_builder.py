@@ -1,5 +1,5 @@
 from settings import *
-from numba import njit
+from numba import njit, uint8
 import numpy as np
 
 
@@ -70,6 +70,7 @@ def get_chunk_index(world_voxel_pos):
     cz = wz // CHUNK_SIZE
     if not (0 <= cx < WORLD_W and 0 <= cy < WORLD_H and 0 <= cz < WORLD_D):
         return -1
+    
     index = cx + WORLD_W * cz + WORLD_AREA * cy
     return index
 

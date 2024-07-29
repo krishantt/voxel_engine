@@ -15,6 +15,7 @@ class Camera:
         self.m_view = glm.mat4()
 
         self.frustum= Frustum(self)
+      
     def update(self):
         self.update_vectors()
         self.update_view_matrix()
