@@ -33,7 +33,7 @@ class VoxelEngine:
 
         self.is_running = True
         self.on_init()
-        
+
     def on_init(self):
         self.textures = Textures(self)
         self.player = Player(self)
@@ -49,6 +49,7 @@ class VoxelEngine:
         self.time = pg.time.get_ticks() * 0.001
         # pg.display.set_caption(f"Voxel Engine | FPS: {int(self.clock.get_fps())}")
         pg.display.set_caption(f'{self.clock.get_fps() :.0f}')
+
     def render(self):
         self.ctx.clear(color=BG_COLOR)
         self.scene.render()

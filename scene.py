@@ -1,10 +1,5 @@
 from world import World
-from settings import *
-from world_objects.voxel_marker import  VoxelMarker
-from world_objects.water import Water
-from world_objects.clouds import Clouds
-
-import moderngl as mgl
+from world_objects.voxel_marker import VoxelMarker
 
 
 class Scene:
@@ -12,7 +7,7 @@ class Scene:
         self.app = app
         self.world = World(self.app)
         self.voxel_marker = VoxelMarker(self.world.voxel_handler)
-        
+
         # self.water = Water(app)
         # self.clouds = Clouds(app)
 
@@ -20,6 +15,7 @@ class Scene:
         self.world.update()
         self.voxel_marker.update()
         # self.clouds.update()
+
     def render(self):
         self.world.render()
 
@@ -27,6 +23,5 @@ class Scene:
         # self.clouds.render()
         # self.water.render()
         # self.app.ctx.enable(mgl.CULL_FACE)
-
 
         self.voxel_marker.render()

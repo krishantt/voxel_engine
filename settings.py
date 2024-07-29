@@ -1,8 +1,6 @@
-import glm
 import math
-from numba import njit
-import numpy as np
 
+import glm
 
 MAJOR_VER, MINOR_VER = 3, 3
 DEPTH_SIZE = 24
@@ -22,7 +20,7 @@ CHUNK_SIZE = 32
 H_CHUNK_SIZE = CHUNK_SIZE // 2
 CHUNK_AREA = CHUNK_SIZE * CHUNK_SIZE
 CHUNK_VOL = CHUNK_AREA * CHUNK_SIZE
-CHUNK_SPHERE_RADIUS= H_CHUNK_SIZE* math.sqrt(3)
+CHUNK_SPHERE_RADIUS = H_CHUNK_SIZE * math.sqrt(3)
 
 # world
 WORLD_W, WORLD_H = 30, 3
@@ -65,7 +63,6 @@ STONE_LVL = 49
 DIRT_LVL = 40
 GRASS_LVL = 8
 SAND_LVL = 7
-
 
 # tree settings
 TREE_PROBABILITY = 0.02

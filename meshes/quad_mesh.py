@@ -1,6 +1,6 @@
-from meshes.base_mesh import BaseMesh
 import numpy as np
-from settings import *
+
+from meshes.base_mesh import BaseMesh
 
 
 class QuadMesh(BaseMesh):
@@ -20,7 +20,6 @@ class QuadMesh(BaseMesh):
         self.attrs = ('in_tex_coord', 'in_position')
         self.vao = self.get_vao()
 
-
     def get_vertex_data(self):
         vertices = np.array([
             (0, 0, 0), (1, 0, 1), (1, 0, 0),
@@ -34,16 +33,6 @@ class QuadMesh(BaseMesh):
 
         vertex_data = np.hstack([tex_coords, vertices])
         return vertex_data
-
-
-
-
-
-
-
-
-
-
 
     # def get_vertex_data(self):
     #     vertices = [

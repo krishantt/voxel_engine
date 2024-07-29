@@ -1,4 +1,3 @@
-from settings import *
 from meshes.base_mesh import BaseMesh
 import numpy as np
 
@@ -46,21 +45,3 @@ class CubeMesh(BaseMesh):
         tex_coord_data = self.get_data(tex_coord_vertices, tex_coord_indices)
         vertex_data = np.hstack([tex_coord_data, vertex_data])
         return vertex_data
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

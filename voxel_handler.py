@@ -1,6 +1,6 @@
-from settings import *
-from world_objects.chunk import Chunk
 from meshes.chunk_mesh_builder import get_chunk_index
+from settings import *
+
 
 class VoxelHandler:
     def __init__(self, world):
@@ -33,29 +33,27 @@ class VoxelHandler:
 
     def rebuild_adj_chunk(self, adj_voxel_pos):
         index = get_chunk_index(adj_voxel_pos)
-        if index!= -1:
+        if index != -1:
             self.chunks[index].mesh.rebuild()
 
-            
     def rebuild_adjacent_chunks(self):
         lx, ly, lz = self.voxel_local_pos
         wx, wy, wz = self.voxel_world_pos
 
         if lx == 0:
-            self.rebuild_adj_chunk((wx-1, wy, wz))
-        elif lx == CHUNK_SIZE -1:
-            self.rebuild_adj_chunk((wx+1, wy, wz))
-            
-        if ly == 0:
-            self.rebuild_adj_chunk((wx, wy-1, wz))
-        elif ly == CHUNK_SIZE -1:
-            self.rebuild_adj_chunk((wx, wy+1, wz))
-        
-        if lz == 0:
-            self.rebuild_adj_chunk((wx, wy, wz-1))
-        elif lz == CHUNK_SIZE -1:
-            self.rebuild_adj_chunk((wx, wy, wz+1))
+            self.rebuild_adj_chunk((wx - 1, wy, wz))
+        elif lx == CHUNK_SIZE - 1:
+            self.rebuild_adj_chunk((wx + 1, wy, wz))
 
+        if ly == 0:
+            self.rebuild_adj_chunk((wx, wy - 1, wz))
+        elif ly == CHUNK_SIZE - 1:
+            self.rebuild_adj_chunk((wx, wy + 1, wz))
+
+        if lz == 0:
+            self.rebuild_adj_chunk((wx, wy, wz - 1))
+        elif lz == CHUNK_SIZE - 1:
+            self.rebuild_adj_chunk((wx, wy, wz + 1))
 
     def remove_voxel(self):
         if self.voxel_id:
@@ -63,7 +61,6 @@ class VoxelHandler:
 
             self.chunk.mesh.rebuild()
             self.rebuild_adjacent_chunks()
-
 
     def set_voxel(self):
         if self.interaction_mode:
@@ -137,8 +134,7 @@ class VoxelHandler:
 
     def get_voxel_id(self, voxel_world_pos):
         cx, cy, cz = chunk_pos = voxel_world_pos / CHUNK_SIZE
-        
-        
+
         if 0 <= cx < WORLD_W and 0 <= cy < WORLD_H and 0 <= cz < WORLD_D:
             chunk_index = cx + WORLD_W * cz + WORLD_AREA * cy
             chunk = self.chunks[chunk_index]

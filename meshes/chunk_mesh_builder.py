@@ -1,6 +1,7 @@
-from settings import *
-from numba import njit, uint8
 import numpy as np
+from numba import njit
+
+from settings import *
 
 
 @njit

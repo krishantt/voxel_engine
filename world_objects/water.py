@@ -1,5 +1,4 @@
 from meshes.quad_mesh import QuadMesh
-from settings import *
 
 
 class Water:

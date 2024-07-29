@@ -1,13 +1,12 @@
-from noise import noise2,noise3
 from random import random
 from numba import njit
-
+from noise import noise2, noise3
 from settings import *
 
-@njit
-def get_height(x,z):
 
-     # island mask
+@njit
+def get_height(x, z):
+    # island mask
     island = 1 / (pow(0.0025 * math.hypot(x - CENTER_XZ, z - CENTER_XZ), 20) + 0.0001)
     island = min(island, 1)
 
@@ -16,28 +15,29 @@ def get_height(x,z):
     a4 = a1 * 0.25
     a8 = a1 * 0.125
 
-
     f1 = 0.005
     f2, f4, f8 = f1 * 2, f1 * 4, f1 * 8
 
-    if noise2(0.1 *x, 0.1 * z) < 0 :
-        a1/= 1.07
-
+    if noise2(0.1 * x, 0.1 * z) < 0:
+        a1 /= 1.07
 
     height = 0
-    height += noise2(x* f1, z* f1)* a1 + a1
-    height += noise2(x* f2, z* f2)* a2 - a2
-    height += noise2(x* f4, z* f4)* a4 + a4
-    height += noise2(x* f8, z* f8)* a8 - a8
+    height += noise2(x * f1, z * f1) * a1 + a1
+    height += noise2(x * f2, z * f2) * a2 - a2
+    height += noise2(x * f4, z * f4) * a4 + a4
+    height += noise2(x * f8, z * f8) * a8 - a8
 
-    height = max(height,noise2(x * f8, z * f8)+2)
+    height = max(height, noise2(x * f8, z * f8) + 2)
     height *= island
 
     return int(height)
 
+
 @njit
 def get_index(x, y, z):
     return x + CHUNK_SIZE * z + CHUNK_AREA * y
+
+
 @njit
 def set_voxel_id(voxels, x, y, z, wx, wy, wz, world_height):
     voxel_id = 0
@@ -48,7 +48,7 @@ def set_voxel_id(voxels, x, y, z, wx, wy, wz, world_height):
             voxel_id = 0
         else:
             voxel_id = STONE
-    
+
     else:
         rng = int(7 * random())
         ry = wy - rng
@@ -67,12 +67,12 @@ def set_voxel_id(voxels, x, y, z, wx, wy, wz, world_height):
         else:
             voxel_id = SAND
 
-        voxels[get_index(x,y,z)] = voxel_id
+        voxels[get_index(x, y, z)] = voxel_id
+
+        if wy < DIRT_LVL:
+            place_tree(voxels, x, y, z, voxel_id)
 
 
-        if wy< DIRT_LVL:
-            place_tree(voxels,x,y,z, voxel_id)
-        
 @njit
 def place_tree(voxels, x, y, z, voxel_id):
     rnd = random()
