@@ -1,4 +1,5 @@
 from world import World
+from settings import *
 from world_objects.voxel_marker import  VoxelMarker
 
 

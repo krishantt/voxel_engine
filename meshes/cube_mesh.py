@@ -1,5 +1,6 @@
 from settings import *
 from meshes.base_mesh import BaseMesh
+import numpy as np
 
 
 class CubeMesh(BaseMesh):

@@ -45,6 +45,7 @@ class VoxelHandler:
             self.rebuild_adj_chunk((wx-1, wy, wz))
         elif lx == CHUNK_SIZE -1:
             self.rebuild_adj_chunk((wx+1, wy, wz))
+            
         if ly == 0:
             self.rebuild_adj_chunk((wx, wy-1, wz))
         elif ly == CHUNK_SIZE -1:
@@ -54,12 +55,14 @@ class VoxelHandler:
             self.rebuild_adj_chunk((wx, wy, wz-1))
         elif lz == CHUNK_SIZE -1:
             self.rebuild_adj_chunk((wx, wy, wz+1))
+
+
     def remove_voxel(self):
         if self.voxel_id:
             self.chunk.voxels[self.voxel_index] = 0
 
             self.chunk.mesh.rebuild()
-
+            self.rebuild_adjacent_chunks()
 
 
     def set_voxel(self):
