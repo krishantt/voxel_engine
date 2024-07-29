@@ -8,7 +8,7 @@ class Frustum:
         self.factor_y = 1.0 / math.cos(half_y := V_FOV * 0.5)
         self.tan_y = math.tan(half_y)
 
-        self.factor_x = 1.0 / math.cos(half_x := V_FOV * 0.5)
+        self.factor_x = 1.0 / math.cos(half_x := H_FOV * 0.5)
         self.tan_x = math.tan(half_x)
 
     def is_on_frustum(self, chunk):

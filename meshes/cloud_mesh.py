@@ -2,6 +2,7 @@ from settings import *
 from meshes.base_mesh import BaseMesh
 from noise import *
 import numpy as np
+from numba import njit
 
 
 class CloudMesh(BaseMesh):
