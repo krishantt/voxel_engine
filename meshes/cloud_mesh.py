@@ -1,6 +1,7 @@
 from settings import *
 from meshes.base_mesh import BaseMesh
 from noise import *
+import numpy as np
 
 
 class CloudMesh(BaseMesh):

@@ -9,8 +9,8 @@ class Player(Camera):
         super().__init__(position, yaw, pitch)
 
     def update(self):
-        self.mouse_control()
         self.keyboard_control()
+        self.mouse_control()
         super().update()
 
     def handle_event(self, event):

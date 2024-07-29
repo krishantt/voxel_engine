@@ -9,10 +9,6 @@ class QuadMesh(BaseMesh):
 
         self.app = app
         self.ctx = self.app.ctx
-        # self.program = self.app.shader_program.quad
-
-        # self.vbo_format = '3f 3f'
-        # self.attrs = ('in_position', 'in_color')
 
         self.program = self.app.shader_program.water
 
@@ -33,15 +29,3 @@ class QuadMesh(BaseMesh):
 
         vertex_data = np.hstack([tex_coords, vertices])
         return vertex_data
-
-    # def get_vertex_data(self):
-    #     vertices = [
-    #         (0.5, 0.5, 0.0), (-0.5, 0.5, 0.0), (-0.5, -0.5, 0.0),
-    #         (0.5, 0.5, 0.0), (-0.5, -0.5, 0.0), (0.5, -0.5, 0.0)
-    #     ]
-    #     colors = [
-    #         (0, 1, 0), (1, 0, 0), (1, 1, 0),
-    #         (0, 1, 0), (1, 1, 0), (0, 0, 1)
-    #     ]
-    #     vertex_data = np.hstack([vertices, colors], dtype=np.float32)
-    #     return vertex_data

@@ -67,10 +67,10 @@ def set_voxel_id(voxels, x, y, z, wx, wy, wz, world_height):
         else:
             voxel_id = SAND
 
-        voxels[get_index(x, y, z)] = voxel_id
+    voxels[get_index(x, y, z)] = voxel_id
 
-        if wy < DIRT_LVL:
-            place_tree(voxels, x, y, z, voxel_id)
+    if wy < DIRT_LVL:
+        place_tree(voxels, x, y, z, voxel_id)
 
 
 @njit
@@ -88,7 +88,7 @@ def place_tree(voxels, x, y, z, voxel_id):
     # dirt under the tree
     voxels[get_index(x, y, z)] = DIRT
 
-    #leaves
+    # leaves
     m = 0
     for n, iy in enumerate(range(TREE_H_HEIGHT, TREE_HEIGHT - 1)):
         k = iy % 2
