@@ -15,7 +15,7 @@ class Chunk:
         self.mesh: ChunkMesh = None
         self.is_empty = True
 
-        self.center= (glm.vec3(self.position)+0.5)*CHUNK_SIZE
+        self.center= (glm.vec3(self.position) + 0.5) * CHUNK_SIZE
         self.is_on_frustum= self.app.player.frustum.is_on_frustum
 
     def get_model_matrix(self):
@@ -50,7 +50,7 @@ class Chunk:
 
                 for y in range(local_height):
                     wy = y + cy
-                    voxels[x + CHUNK_SIZE * z + CHUNK_AREA * y] = rng
+                    voxels[x + CHUNK_SIZE * z + CHUNK_AREA * y] = 2
 
         if np.any(voxels):
             self.is_empty = False

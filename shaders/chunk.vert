@@ -1,15 +1,17 @@
 #version 330 core
 
 layout(location = 0) in uint packed_data;
+
 int x,y,z;
-int voxel_id;
-int face_id;
 int ao_id;
 int flip_id;
 
 uniform mat4 m_proj;
 uniform mat4 m_view;
 uniform mat4 m_model;
+
+flat out int face_id;
+flat out int voxel_id;
 
 out vec3 voxel_color;
 out vec2 uv;
