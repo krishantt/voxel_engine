@@ -9,10 +9,10 @@ Bindu Paudel         (078BCT032)
 ```
 
 ## Screenshot
-To be added.
+![](screenshots/screen0.png)
 
 ## 📃 Documentations
-To be added.
+To play: WASDQE + Mouse
 
 
 ## 🔨 Build and Run
