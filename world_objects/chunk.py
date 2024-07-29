@@ -57,5 +57,5 @@ class Chunk:
 
                 for y in range(local_height):
                     wy = y + cy
-                    voxels[x + CHUNK_SIZE * z + CHUNK_AREA * y] = 1
+                    set_voxel_id(voxels, x, y, z, wx, wy, wz, world_height)
 
